@@ -1,0 +1,136 @@
+/* ================= Reset ================= */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: Arial, sans-serif;
+  background-color: #ffffff;
+  overflow: hidden; /* Prevent scrolling */
+}
+
+/* ================= Hero Section ================= */
+.hero-section {
+  height: 45vh; /* Reduced height so both sections fit in one view */
+  background-color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.hero-overlay {
+  text-align: center;
+  color: #fff;
+  background: rgba(60, 60, 60, 0.6); /* Transparent grey */
+  backdrop-filter: blur(8px); /* Glass effect */
+  padding: 30px 20px;
+  border-radius: 12px;
+  animation: fadeIn 1s ease-in-out;
+  max-width: 700px;
+}
+
+.hero-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  letter-spacing: 1px;
+  color: #fff; /* White text for contrast */
+}
+
+.hero-subtitle {
+  font-size: 1rem;
+  margin-bottom: 20px;
+  color: #f0f0f0;
+}
+
+.hero-btn {
+  background-color: #009688; /* ✅ Teal button */
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.hero-btn:hover {
+  background-color: #00796b; /* Darker teal on hover */
+}
+
+/* ================= Popular Destinations ================= */
+.destinations-section {
+  height: 55vh; /* Remaining half of screen */
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #ffffff;
+  overflow: hidden;
+}
+
+.destinations-section h2 {
+  text-align: center;
+  color: #009688; /* Match teal accent */
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+}
+
+.destinations-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}
+
+/* Destination Card */
+.destination-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.destination-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.destination-card img {
+  width: 100%;
+  height: 120px; /* Smaller image to fit in one view */
+  object-fit: cover;
+}
+
+.destination-card h3 {
+  margin: 10px 0 5px 0;
+  color: #333;
+  font-size: 1rem;
+}
+
+.destination-card p {
+  margin-bottom: 8px;
+  color: #555;
+  font-size: 13px;
+}
+
+.destination-card button {
+  background: #009688; /* ✅ Teal button */
+  color: #fff;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 13px;
+  margin-bottom: 10px;
+}
+
+.destination-card button:hover {
+  background: #00796b; /* Darker teal on hover */
+}
+
+/* ================= Animation ================= */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}

@@ -1,0 +1,124 @@
+/* Main container */
+.booking-container {
+  padding: 40px 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Page Title */
+.booking-title {
+  text-align: center;
+  color: #1e90ff;
+  margin-bottom: 30px;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+/* Booking Form */
+.booking-form-card {
+  background: #ffffff;
+  padding: 25px 30px;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  margin: 0 auto 40px auto;
+  max-width: 420px;
+}
+
+.booking-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.booking-form label {
+  text-align: left;
+  margin-bottom: 6px;
+  font-weight: 600;
+  color: #333;
+}
+
+.booking-form input,
+.booking-form textarea {
+  padding: 12px;
+  margin-bottom: 18px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 15px;
+}
+
+.booking-form textarea {
+  resize: none;
+  height: 80px;
+}
+
+.booking-form button {
+  background: #1e90ff;
+  color: #fff;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 16px;
+  transition: background 0.3s ease;
+}
+
+.booking-form button:hover {
+  background: #1565c0;
+}
+
+/* List Title */
+.list-title {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+  color: #444;
+}
+
+/* Empty State */
+.empty-msg {
+  text-align: center;
+  color: #777;
+  font-style: italic;
+}
+
+/* Booking List */
+.booking-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+/* Booking Card */
+.booking-card {
+  background: #f9fbff;
+  border: 1px solid #e1e8f5;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease;
+}
+
+.booking-card:hover {
+  transform: translateY(-5px);
+}
+
+.booking-card h4 {
+  color: #1e90ff;
+  margin-bottom: 10px;
+}
+
+.booking-card button {
+  margin-top: 10px;
+  background: #ff4d4f;
+  color: #fff;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.booking-card button:hover {
+  background: #d9363e;
+}

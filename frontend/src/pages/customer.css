@@ -1,0 +1,65 @@
+/* Customer Page Container */
+.customer-container {
+  display: flex;
+  justify-content: center;
+  padding: 40px 20px;
+  background-color: #f0f8ff; /* Light blue background */
+  min-height: calc(100vh - 80px); /* minus header/footer */
+}
+
+/* Card style for all pages */
+.customer-card {
+  background-color: #ffffff; /* White card */
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  width: 400px;
+  text-align: center;
+}
+
+/* Titles */
+.customer-card h2 {
+  color: #1e90ff; /* Blue title */
+  margin-bottom: 20px;
+}
+
+/* Form inputs */
+.customer-card input,
+.customer-card select {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+}
+
+/* Buttons */
+.customer-card button {
+  width: 100%;
+  padding: 12px;
+  background-color: #1e90ff; /* Blue button */
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.customer-card button:hover {
+  background-color: #1565c0; /* Darker blue on hover */
+}
+
+/* Dashboard buttons */
+.dashboard-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.dashboard-buttons button {
+  width: auto;
+  padding: 10px 20px;
+}

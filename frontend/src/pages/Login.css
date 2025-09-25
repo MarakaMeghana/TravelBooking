@@ -1,0 +1,52 @@
+/* Center the login form horizontally, slightly higher vertically */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* aligns items at the top instead of center */
+  padding-top: 100px; /* push the card down from the top */
+  height: 100vh;
+  background-color: #f0f8ff; /* Light blue background */
+}
+
+/* Card for the login form */
+.login-card {
+  background-color: #ffffff; /* White card */
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  width: 350px;
+  text-align: center;
+}
+
+/* Title */
+.login-title {
+  color: #1e90ff; /* Blue title */
+  margin-bottom: 20px;
+}
+
+/* Form inputs */
+.login-form input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+}
+
+/* Submit button */
+.login-form button {
+  width: 100%;
+  padding: 12px;
+  background-color: #1e90ff; /* Blue button */
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.login-form button:hover {
+  background-color: #1565c0; /* Darker blue on hover */
+}
