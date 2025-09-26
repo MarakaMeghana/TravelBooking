@@ -1,111 +1,122 @@
-import { useState } from "react";
-import Header from "../components/Customer/Header";
-import Footer from "../components/Customer/Footer";
+import React, { useState } from "react";
+import Header from "../components/Customer/Header";   // ✅ Navbar
+import Footer from "../components/Customer/Footer";   // ✅ Footer
 import "./Booking.css";
 
-const Booking = () => {
+function Booking() {
   const [bookings, setBookings] = useState([]);
-  const [form, setForm] = useState({
+  const [formData, setFormData] = useState({
     destination: "",
     date: "",
     travelers: "",
     notes: "",
   });
 
+  // Handle input change
   const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
   };
 
+  // Handle form submit
   const handleSubmit = (e) => {
     e.preventDefault();
-    setBookings([...bookings, { ...form, id: Date.now() }]);
-    setForm({ destination: "", date: "", travelers: "", notes: "" });
+
+    if (!formData.destination || !formData.date || !formData.travelers) {
+      alert("Please fill in all required fields!");
+      return;
+    }
+
+    setBookings((prev) => [...prev, formData]);
+    setFormData({
+      destination: "",
+      date: "",
+      travelers: "",
+      notes: "",
+    });
   };
 
-  const handleDelete = (id) => {
-    setBookings(bookings.filter((b) => b.id !== id));
+  // Delete booking
+  const handleDelete = (index) => {
+    const updated = bookings.filter((_, i) => i !== index);
+    setBookings(updated);
   };
 
   return (
     <>
-      <Header />
+      <Header />  {/* ✅ Navbar at the top */}
+
       <div className="booking-container">
-        {/* Title */}
-        <h2 className="booking-title">Plan Your Trip</h2>
+        <h2 className="booking-title">Plan Your Journey ✈️</h2>
 
         {/* Booking Form */}
         <div className="booking-form-card">
           <form onSubmit={handleSubmit} className="booking-form">
-            <label>Destination</label>
+            <label>Destination *</label>
             <input
               type="text"
               name="destination"
-              value={form.destination}
+              placeholder="e.g., Paris, Goa"
+              value={formData.destination}
               onChange={handleChange}
-              placeholder="Enter destination (e.g., Paris, Goa)"
-              required
             />
 
-            <label>Date</label>
+            <label>Date *</label>
             <input
               type="date"
               name="date"
-              value={form.date}
+              value={formData.date}
               onChange={handleChange}
-              required
             />
 
-            <label>No. of Travelers</label>
+            <label>No. of Travelers *</label>
             <input
               type="number"
               name="travelers"
-              value={form.travelers}
-              onChange={handleChange}
               placeholder="e.g., 2"
-              required
+              value={formData.travelers}
+              onChange={handleChange}
             />
 
             <label>Special Notes</label>
             <textarea
               name="notes"
-              value={form.notes}
-              onChange={handleChange}
               placeholder="Any special requests..."
-            />
+              value={formData.notes}
+              onChange={handleChange}
+            ></textarea>
 
             <button type="submit">Add Booking</button>
           </form>
         </div>
 
-        {/* Bookings List */}
+        {/* Booking List */}
         <h3 className="list-title">Your Bookings</h3>
-        <div className="booking-list">
-          {bookings.length === 0 ? (
-            <p className="empty-msg">No bookings yet. Start planning your trip!</p>
-          ) : (
-            bookings.map((b) => (
-              <div key={b.id} className="booking-card">
-                <h4>{b.destination}</h4>
-                <p>
-                  <strong>Date:</strong> {b.date}
-                </p>
-                <p>
-                  <strong>Travelers:</strong> {b.travelers}
-                </p>
-                {b.notes && (
-                  <p>
-                    <strong>Notes:</strong> {b.notes}
-                  </p>
-                )}
-                <button onClick={() => handleDelete(b.id)}>Cancel</button>
+        {bookings.length === 0 ? (
+          <p className="empty-msg">
+            No bookings yet. Start planning your dream trip! 🌍
+          </p>
+        ) : (
+          <div className="booking-list">
+            {bookings.map((booking, index) => (
+              <div key={index} className="booking-card">
+                <h4>📍 {booking.destination}</h4>
+                <p>📅 Date: {booking.date}</p>
+                <p>👥 Travelers: {booking.travelers}</p>
+                {booking.notes && <p>📝 Notes: {booking.notes}</p>}
+                <button onClick={() => handleDelete(index)}>Cancel</button>
               </div>
-            ))
-          )}
-        </div>
+            ))}
+          </div>
+        )}
       </div>
-      <Footer />
+
+      <Footer />  {/* ✅ Footer at the bottom */}
     </>
   );
-};
+}
 
 export default Booking;

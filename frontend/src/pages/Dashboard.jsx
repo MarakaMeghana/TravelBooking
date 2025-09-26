@@ -36,12 +36,13 @@ const Dashboard = () => {
 
   return (
     <>
+      {/* Header */}
       <Header />
 
       {/* Hero Section */}
       <section className="hero-section">
         <div className="hero-overlay">
-          <h1 className="hero-title">Welcome to Travel Booking Platform</h1>
+          <h1 className="hero-title">Welcome to TravelEase</h1>
           <p className="hero-subtitle">
             Plan your trips seamlessly with flights, hotels, and cabs.
           </p>
@@ -51,7 +52,7 @@ const Dashboard = () => {
         </div>
       </section>
 
-      {/* Popular Destinations Section */}
+      {/* Popular Destinations */}
       <section className="destinations-section">
         <h2 className="destinations-title">Popular Destinations</h2>
         <div className="destinations-grid">
@@ -66,6 +67,7 @@ const Dashboard = () => {
         </div>
       </section>
 
+      {/* Footer */}
       <Footer />
     </>
   );

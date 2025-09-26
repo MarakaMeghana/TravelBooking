@@ -1,28 +1,30 @@
-/* Main container */
+/* Booking Container */
 .booking-container {
-  padding: 40px 20px;
-  max-width: 1000px;
+  padding: 100px 20px 40px 20px; /* ✅ space for navbar */
+  max-width: 1200px;
   margin: 0 auto;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: #f5fafd; /* ✅ subtle light background */
+  min-height: 100vh;
 }
 
-/* Page Title */
+/* Title */
 .booking-title {
   text-align: center;
-  color: #1e90ff;
+  color: #008080; /* ✅ turquoise to match navbar */
   margin-bottom: 30px;
-  font-size: 2rem;
+  font-size: 2.2rem;
   font-weight: bold;
 }
 
 /* Booking Form */
 .booking-form-card {
   background: #ffffff;
-  padding: 25px 30px;
+  padding: 30px;
   border-radius: 12px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
   margin: 0 auto 40px auto;
-  max-width: 420px;
+  max-width: 500px;
 }
 
 .booking-form {
@@ -31,7 +33,6 @@
 }
 
 .booking-form label {
-  text-align: left;
   margin-bottom: 6px;
   font-weight: 600;
   color: #333;
@@ -52,11 +53,11 @@
 }
 
 .booking-form button {
-  background: #1e90ff;
+  background: #008080; /* ✅ turquoise */
   color: #fff;
   padding: 12px;
   border: none;
-  border-radius: 6px;
+  border-radius: 8px;
   cursor: pointer;
   font-weight: bold;
   font-size: 16px;
@@ -64,7 +65,7 @@
 }
 
 .booking-form button:hover {
-  background: #1565c0;
+  background: #006666; /* darker turquoise */
 }
 
 /* List Title */
@@ -72,7 +73,7 @@
   text-align: center;
   margin-bottom: 20px;
   font-size: 1.5rem;
-  color: #444;
+  color: #008080;
 }
 
 /* Empty State */
@@ -91,32 +92,41 @@
 
 /* Booking Card */
 .booking-card {
-  background: #f9fbff;
+  background: #ffffff;
   border: 1px solid #e1e8f5;
   border-radius: 10px;
   padding: 20px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-  transition: transform 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .booking-card:hover {
   transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
 }
 
 .booking-card h4 {
-  color: #1e90ff;
+  color: #008080;
   margin-bottom: 10px;
 }
 
+.booking-card p {
+  margin-bottom: 6px;
+  color: #444;
+  font-size: 14px;
+}
+
+/* Cancel Button */
 .booking-card button {
   margin-top: 10px;
   background: #ff4d4f;
   color: #fff;
   border: none;
   padding: 8px 14px;
-  border-radius: 5px;
+  border-radius: 6px;
   cursor: pointer;
   font-size: 14px;
+  transition: background 0.2s ease;
 }
 
 .booking-card button:hover {

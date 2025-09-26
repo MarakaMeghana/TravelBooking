@@ -1,65 +1,89 @@
-/* Customer Page Container */
-.customer-container {
-  display: flex;
-  justify-content: center;
-  padding: 40px 20px;
-  background-color: #f0f8ff; /* Light blue background */
-  min-height: calc(100vh - 80px); /* minus header/footer */
-}
-
-/* Card style for all pages */
-.customer-card {
-  background-color: #ffffff; /* White card */
-  padding: 40px;
-  border-radius: 10px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-  width: 400px;
+/* Profile Page */
+.profile-container {
+  max-width: 900px;   /* increased width */
+  margin: 2rem auto;
+  padding: 2.5rem;    /* more breathing room */
+  flex: 1;
   text-align: center;
 }
 
-/* Titles */
-.customer-card h2 {
-  color: #1e90ff; /* Blue title */
-  margin-bottom: 20px;
+.profile-title {
+  font-size: 2rem; /* slightly larger */
+  font-weight: 600;
+  color: #004466; /* professional dark teal */
+  margin-bottom: 2rem;
+  text-align: center;
+  letter-spacing: 0.5px;
 }
 
-/* Form inputs */
-.customer-card input,
-.customer-card select {
-  width: 100%;
-  padding: 12px;
-  margin-bottom: 15px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 16px;
+/* Card */
+.profile-card {
+  background: #ffffff;
+  padding: 2.5rem 3rem; /* expanded padding */
+  border-radius: 14px;
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
 }
 
-/* Buttons */
-.customer-card button {
-  width: 100%;
-  padding: 12px;
-  background-color: #1e90ff; /* Blue button */
-  color: #fff;
-  border: none;
-  border-radius: 6px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.customer-card button:hover {
-  background-color: #1565c0; /* Darker blue on hover */
-}
-
-/* Dashboard buttons */
-.dashboard-buttons {
+/* Avatar */
+.profile-avatar {
   display: flex;
   justify-content: center;
-  gap: 15px;
-  margin-top: 20px;
+  margin-bottom: 2rem;
 }
 
-.dashboard-buttons button {
-  width: auto;
-  padding: 10px 20px;
+.profile-avatar img {
+  width: 100px;   /* slightly larger with bigger container */
+  height: 100px;
+  border-radius: 50%;
+  border: 2px solid #006666;
+  object-fit: cover;
+}
+
+/* Form */
+.profile-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.profile-form label {
+  text-align: left;
+  font-weight: 600;
+  color: #333;
+  font-size: 1rem;
+}
+
+.profile-form input {
+  padding: 1rem 1.2rem;
+  border: 1px solid #bbb;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-form input:focus {
+  border: 1px solid #006666;
+  box-shadow: 0 0 6px rgba(0, 102, 102, 0.3);
+  outline: none;
+}
+
+/* Button */
+.update-btn {
+  background: #006666;
+  color: #fff;
+  padding: 1rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.update-btn:hover {
+  background: #004c4c;
+  transform: translateY(-2px);
 }
