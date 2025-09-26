@@ -1,2 +1,0 @@
-INDEX VERSION 1.4+C:\Users\SONIKA\OneDrive\Documents\TravelBooking\TravelBooking\backend-admin\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
-2574783970.index
