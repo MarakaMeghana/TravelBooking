@@ -1,21 +1,29 @@
-import { useState, useContext } from "react";
+// src/pages/Register.jsx
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { AuthContext } from "../context/AuthContext";
-import "./Register.css"; // Import CSS
+import { registerUser } from "../services/api"; // 👈 backend API
+import "./Register.css";
 
 const Register = () => {
-  const { register } = useContext(AuthContext); // You can add a register function later
   const navigate = useNavigate();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [message, setMessage] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // For now, just simulate registration
-    register && register({ name, email, role: "customer" });
-    alert("Registered successfully!");
-    navigate("/");
+
+    try {
+      const res = await registerUser({ name, email, password });
+      setMessage("Registered successfully ✅");
+      console.log("User created:", res.data);
+
+      // After signup → redirect to login
+      navigate("/");
+    } catch (err) {
+      setMessage("Error: " + (err.response?.data || err.message));
+    }
   };
 
   return (
@@ -25,27 +33,37 @@ const Register = () => {
         <form onSubmit={handleSubmit} className="register-form">
           <input
             type="text"
-            placeholder="Name"
+            placeholder="Full Name"
             value={name}
             onChange={(e) => setName(e.target.value)}
             required
           />
           <input
             type="email"
-            placeholder="Email"
+            placeholder="Email Address"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
           />
           <input
             type="password"
-            placeholder="Password"
+            placeholder="Choose Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
           />
           <button type="submit">Register</button>
         </form>
+        {message && <p>{message}</p>}
+        <p style={{ marginTop: "15px" }}>
+          Already have an account?{" "}
+          <span
+            style={{ color: "#1e90ff", cursor: "pointer" }}
+            onClick={() => navigate("/")}
+          >
+            Login
+          </span>
+        </p>
       </div>
     </div>
   );

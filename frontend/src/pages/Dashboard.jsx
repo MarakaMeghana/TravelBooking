@@ -1,14 +1,16 @@
 // src/pages/Dashboard.jsx
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Header from "../components/Customer/Header";
 import Footer from "../components/Customer/Footer";
-import { useNavigate } from "react-router-dom";
+import { getDashboardData } from "../services/api"; // 👈 backend API
 import "./Dashboard.css";
 
 import ParisImg from "../assets/france.jpg";
 import BaliImg from "../assets/bali.jpg";
 import NewYorkImg from "../assets/newyork.jpg";
 
-// Destinations array
+// Static fallback destinations
 const destinations = [
   {
     name: "Paris, France",
@@ -29,6 +31,27 @@ const destinations = [
 
 const Dashboard = () => {
   const navigate = useNavigate();
+  const [dashboardData, setDashboardData] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  // ⚡ Fetch backend dashboard data
+  useEffect(() => {
+    const userId = localStorage.getItem("userId"); // stored during login
+    if (!userId) {
+      setLoading(false);
+      return;
+    }
+
+    getDashboardData(userId)
+      .then((res) => {
+        setDashboardData(res.data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error("Error fetching dashboard:", err);
+        setLoading(false);
+      });
+  }, []);
 
   const handleBookNow = () => {
     navigate("/booking");
@@ -50,6 +73,31 @@ const Dashboard = () => {
             Start Booking
           </button>
         </div>
+      </section>
+
+      {/* Dashboard Data Section */}
+      <section className="dashboard-summary">
+        <h2 className="dashboard-title">Your Travel Summary</h2>
+        {loading ? (
+          <p>Loading dashboard...</p>
+        ) : dashboardData ? (
+          <div className="dashboard-cards">
+            <div className="dashboard-card">
+              <h3>Total Bookings</h3>
+              <p>{dashboardData.totalBookings}</p>
+            </div>
+            <div className="dashboard-card">
+              <h3>Upcoming Trips</h3>
+              <p>{dashboardData.upcomingTrips}</p>
+            </div>
+            <div className="dashboard-card">
+              <h3>Completed Trips</h3>
+              <p>{dashboardData.completedTrips}</p>
+            </div>
+          </div>
+        ) : (
+          <p>No data available.</p>
+        )}
       </section>
 
       {/* Popular Destinations */}

@@ -1,64 +1,91 @@
-import { useContext, useState } from "react";
-import Header from "../components/Customer/Header";
-import Footer from "../components/Customer/Footer";
-import { AuthContext } from "../context/AuthContext";
-import "../pages/customer.css";
+import { useEffect, useState } from "react";
+import { getProfile, updateProfile } from "../services/api"; // 👈 API methods
+import Header from "../components/Customer/Header"; // ✅ Import Header
+import "./profile.css"; // 👈 add styles
 
 const Profile = () => {
-  const { user, login } = useContext(AuthContext);
-  const [name, setName] = useState(user?.name || "");
-  const [email, setEmail] = useState(user?.email || "");
+  const userId = localStorage.getItem("userId"); // ✅ Get logged-in userId
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [message, setMessage] = useState("");
 
-  const handleUpdate = (e) => {
+  // ✅ Fetch profile data when page loads
+  useEffect(() => {
+    const fetchProfile = async () => {
+      try {
+        const res = await getProfile(userId);
+        setName(res.data.name);
+        setEmail(res.data.email);
+      } catch (err) {
+        setMessage("❌ Error loading profile");
+      }
+    };
+    if (userId) fetchProfile();
+  }, [userId]);
+
+  // ✅ Handle profile update
+  const handleUpdate = async (e) => {
     e.preventDefault();
-    const updatedUser = { ...user, name, email };
-    login(updatedUser);
-    alert("✅ Profile updated successfully!");
+    try {
+      await updateProfile(userId, {
+        name,
+        password, // 👈 Only update name & password
+      });
+
+      setMessage("✅ Profile updated successfully!");
+      setPassword(""); // clear password field
+      localStorage.setItem("userName", name); // update localStorage
+    } catch (err) {
+      setMessage("❌ Update failed: " + (err.response?.data || err.message));
+    }
   };
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
+    <>
+      {/* ✅ Header on top */}
       <Header />
 
-      <main className="profile-container">
-        <h2 className="profile-title">👤 My Profile</h2>
-
+      <div className="profile-container">
         <div className="profile-card">
-          {/* Avatar */}
-          <div className="profile-avatar">
-            <img
-              src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
-              alt="Profile Avatar"
-            />
-          </div>
+          <h2 className="profile-title">My Profile</h2>
 
-          {/* Profile Form */}
           <form onSubmit={handleUpdate} className="profile-form">
-            <label>Full Name</label>
-            <input
-              type="text"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              placeholder="Enter your name"
-            />
+            <div className="form-group">
+              <label>Full Name</label>
+              <input
+                type="text"
+                placeholder="Full Name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                required
+              />
+            </div>
 
-            <label>Email Address</label>
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Enter your email"
-            />
+            <div className="form-group">
+              <label>Email (cannot change)</label>
+              <input type="email" value={email} disabled />
+            </div>
 
-            <button type="submit" className="update-btn">
-              💾 Save Changes
+            <div className="form-group">
+              <label>New Password</label>
+              <input
+                type="password"
+                placeholder="Enter new password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </div>
+
+            <button type="submit" className="profile-btn">
+              Update Profile
             </button>
           </form>
-        </div>
-      </main>
 
-      <Footer />
-    </div>
+          {message && <p className="profile-message">{message}</p>}
+        </div>
+      </div>
+    </>
   );
 };
 

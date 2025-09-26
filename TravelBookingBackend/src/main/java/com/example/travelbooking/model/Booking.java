@@ -11,27 +11,77 @@ public class Booking {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    // Link to user (just storing userId for now)
+    @Column(nullable = false)
+    private Long userId;
+
+    @Column(nullable = false)
     private String destination;
-    private LocalDate travelDate;
-    private int travelers;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
+    @Column(nullable = false)
+    private LocalDate startDate;
 
-    // --- Getters & Setters ---
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
+    @Column(nullable = false)
+    private LocalDate endDate;
 
-    public String getDestination() { return destination; }
-    public void setDestination(String destination) { this.destination = destination; }
+    @Column(nullable = false)
+    private Integer numOfPeople;
 
-    public LocalDate getTravelDate() { return travelDate; }
-    public void setTravelDate(LocalDate travelDate) { this.travelDate = travelDate; }
+    // ===== Constructors =====
+    public Booking() {
+    }
 
-    public int getTravelers() { return travelers; }
-    public void setTravelers(int travelers) { this.travelers = travelers; }
+    public Booking(Long id, Long userId, String destination,
+                   LocalDate startDate, LocalDate endDate,
+                   Integer numOfPeople) {
+        this.id = id;
+        this.userId = userId;
+        this.destination = destination;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.numOfPeople = numOfPeople;
+    }
 
-    public User getUser() { return user; }
-    public void setUser(User user) { this.user = user; }
+    // ===== Getters & Setters =====
+    public Long getId() {
+        return id;
+    }
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+
+    public String getDestination() {
+        return destination;
+    }
+    public void setDestination(String destination) {
+        this.destination = destination;
+    }
+
+    public LocalDate getStartDate() {
+        return startDate;
+    }
+    public void setStartDate(LocalDate startDate) {
+        this.startDate = startDate;
+    }
+
+    public LocalDate getEndDate() {
+        return endDate;
+    }
+    public void setEndDate(LocalDate endDate) {
+        this.endDate = endDate;
+    }
+
+    public Integer getNumOfPeople() {
+        return numOfPeople;
+    }
+    public void setNumOfPeople(Integer numOfPeople) {
+        this.numOfPeople = numOfPeople;
+    }
 }

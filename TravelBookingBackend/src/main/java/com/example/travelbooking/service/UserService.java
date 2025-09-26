@@ -18,13 +18,27 @@ public class UserService {
         this.passwordEncoder = passwordEncoder;
     }
 
+    // ✅ Register a new user
     public User register(User user) {
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
-        user.setRole("ROLE_USER");
+        user.setPassword(passwordEncoder.encode(user.getPassword())); // hash password
+        user.setRole("ROLE_USER"); // default role
         return userRepository.save(user);
     }
 
+    // ✅ Find by email
     public Optional<User> findByEmail(String email) {
         return userRepository.findByEmail(email);
+    }
+
+    // ✅ Authenticate user (login)
+    public Optional<User> authenticate(String email, String rawPassword) {
+        Optional<User> userOpt = userRepository.findByEmail(email);
+        if (userOpt.isPresent()) {
+            User user = userOpt.get();
+            if (passwordEncoder.matches(rawPassword, user.getPassword())) {
+                return Optional.of(user); // success
+            }
+        }
+        return Optional.empty(); // fail
     }
 }

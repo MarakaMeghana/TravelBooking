@@ -1,10 +1,31 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
 
 const Header = () => {
   const { user, logout } = useContext(AuthContext);
   const navigate = useNavigate();
+  const [displayName, setDisplayName] = useState(
+    localStorage.getItem("userName") || user?.name || "Guest"
+  );
+
+  // ✅ Sync name changes from localStorage (Profile updates)
+  useEffect(() => {
+    const handleStorageChange = () => {
+      setDisplayName(localStorage.getItem("userName") || user?.name || "Guest");
+    };
+
+    window.addEventListener("storage", handleStorageChange);
+
+    // Also update when user context changes
+    if (user?.name) {
+      setDisplayName(user.name);
+    }
+
+    return () => {
+      window.removeEventListener("storage", handleStorageChange);
+    };
+  }, [user]);
 
   const handleLogout = () => {
     logout();
@@ -18,8 +39,8 @@ const Header = () => {
         justifyContent: "space-between",
         alignItems: "center",
         padding: "15px 40px",
-        backgroundColor: "#008080", // ✅ White navbar
-        color: "#333",
+        backgroundColor: "#008080", // ✅ Teal navbar
+        color: "#fff",
         boxShadow: "0 2px 6px rgba(0, 0, 0, 0.1)", // ✅ Professional shadow
         position: "sticky",
         top: 0,
@@ -83,8 +104,8 @@ const Header = () => {
 
       {/* Right Side: User + Logout */}
       <div>
-        <span style={{ marginRight: "20px", color: "#555" }}>
-          Hi, {user?.name || "Guest"}
+        <span style={{ marginRight: "20px", color: "#fff", fontWeight: "500" }}>
+          Hi, {displayName} 👋
         </span>
         {user && (
           <button
@@ -100,7 +121,7 @@ const Header = () => {
               transition: "0.3s",
             }}
             onMouseOver={(e) => (e.target.style.backgroundColor = "#00796b")}
-            onMouseOut={(e) => (e.target.style.backgroundColor = "#009688")}
+            onMouseOut={(e) => (e.target.style.backgroundColor = "#044e6bff")}
           >
             Logout
           </button>
