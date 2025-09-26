@@ -1,0 +1,45 @@
+package com.example.traveladmin.controller;
+
+import com.example.traveladmin.model.Flight;
+import com.example.traveladmin.service.FlightService;
+import jakarta.validation.Valid;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/api/admin/flights")
+@CrossOrigin(origins = "http://localhost:5173") // React frontend
+public class FlightController {
+
+    private final FlightService flightService;
+
+    public FlightController(FlightService flightService) {
+        this.flightService = flightService;
+    }
+
+    @GetMapping
+    public List<Flight> getAllFlights() {
+        return flightService.getAllFlights();
+    }
+
+    @GetMapping("/{id}")
+    public Flight getFlight(@PathVariable Long id) {
+        return flightService.getFlightById(id);
+    }
+
+    @PostMapping
+    public Flight addFlight(@Valid @RequestBody Flight flight) {
+        return flightService.addFlight(flight);
+    }
+
+    @PutMapping("/{id}")
+    public Flight updateFlight(@PathVariable Long id, @Valid @RequestBody Flight flight) {
+        return flightService.updateFlight(id, flight);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteFlight(@PathVariable Long id) {
+        flightService.deleteFlight(id);
+    }
+}

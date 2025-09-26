@@ -1,0 +1,93 @@
+/* Full screen center */
+.manage-cabs-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f9fafb;
+}
+
+/* Card layout */
+.manage-cabs-card {
+  width: 90%;
+  max-width: 1100px;
+  background: #fff;
+  border-radius: 16px;
+  padding: 30px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Back link */
+.back-link {
+  display: inline-block;
+  margin-bottom: 15px;
+  text-decoration: none;
+  color: #4f46e5;
+  font-weight: 500;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
+/* Title */
+.page-title {
+  text-align: center;
+  font-size: 26px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Button */
+.button-container {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.add-cab-btn {
+  padding: 10px 20px;
+  background: #4f46e5;
+  color: white;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.add-cab-btn:hover {
+  background: #4338ca;
+}
+
+/* Table */
+.table-container {
+  overflow-x: auto;
+}
+
+.cab-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.cab-table th,
+.cab-table td {
+  padding: 14px;
+  border-bottom: 1px solid #eee;
+}
+
+.cab-table thead {
+  background: #f3f4f6;
+  font-weight: bold;
+}
+
+.empty-msg {
+  color: #6b7280;
+  padding: 20px;
+}

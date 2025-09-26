@@ -1,0 +1,29 @@
+package com.example.traveladmin.model;
+
+import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import lombok.*;
+
+@Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class Hotel {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @NotBlank(message = "Hotel name is required")
+    private String name;
+
+    @NotBlank(message = "City is required")
+    private String city;
+
+    @NotBlank(message = "Address is required")
+    private String address;
+
+    @Min(value = 0, message = "Price per night must be positive")
+    private Double pricePerNight;
+}

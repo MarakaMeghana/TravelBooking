@@ -1,0 +1,45 @@
+package com.example.traveladmin.controller;
+
+import com.example.traveladmin.model.Cab;
+import com.example.traveladmin.service.CabService;
+import jakarta.validation.Valid;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/api/cabs")
+@CrossOrigin(origins = "*") // allow React frontend
+public class CabController {
+
+    private final CabService cabService;
+
+    public CabController(CabService cabService) {
+        this.cabService = cabService;
+    }
+
+    @GetMapping
+    public List<Cab> getAllCabs() {
+        return cabService.getAllCabs();
+    }
+
+    @GetMapping("/{id}")
+    public Cab getCab(@PathVariable Long id) {
+        return cabService.getCabById(id);
+    }
+
+    @PostMapping
+    public Cab addCab(@Valid @RequestBody Cab cab) {
+        return cabService.addCab(cab);
+    }
+
+    @PutMapping("/{id}")
+    public Cab updateCab(@PathVariable Long id, @Valid @RequestBody Cab cab) {
+        return cabService.updateCab(id, cab);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteCab(@PathVariable Long id) {
+        cabService.deleteCab(id);
+    }
+}

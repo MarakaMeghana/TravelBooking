@@ -1,0 +1,13 @@
+package com.example.traveladmin;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
+class TraveladminApplicationTests {
+
+	@Test
+	void contextLoads() {
+	}
+
+}

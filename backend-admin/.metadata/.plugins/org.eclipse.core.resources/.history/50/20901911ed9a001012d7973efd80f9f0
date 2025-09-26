@@ -1,0 +1,29 @@
+package com.example.traveladmin.model;
+
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import lombok.*;
+
+@Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class Cab {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @NotBlank(message = "Cab number is required")
+    private String cabNumber;
+
+    @NotBlank(message = "Driver name is required")
+    private String driverName;
+
+    @NotNull(message = "Capacity is required")
+    private Integer capacity;
+
+    @NotBlank(message = "Status is required")
+    private String status;
+}

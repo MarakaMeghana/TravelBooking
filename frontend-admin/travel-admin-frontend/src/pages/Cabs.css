@@ -1,0 +1,77 @@
+/* Cabs.css */
+
+.page-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 24px;
+  min-height: 100vh;
+  background-color: #f4f6f8;
+}
+
+.cabs-paper {
+  width: 100%;
+  max-width: 900px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  padding: 24px;
+  transition: 0.3s;
+}
+
+.cabs-paper:hover {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.back-button {
+  text-align: right;
+  margin-bottom: 16px;
+}
+
+.back-link {
+  color: #1976d2;
+  font-weight: 500;
+  text-transform: none;
+  text-decoration: none;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
+.header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.header-title {
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+}
+
+.header-icon {
+  margin-right: 8px;
+  font-size: 1.2em;
+}
+
+.table-header {
+  background-color: #1976d2;
+  color: white;
+  font-weight: 600;
+  text-align: center;
+}
+
+.table-row-odd {
+  background-color: #f9f9f9;
+}
+
+.table-row:hover {
+  background-color: #e8f0fe;
+}
+
+.no-data {
+  text-align: center;
+  padding: 40px 0;
+}

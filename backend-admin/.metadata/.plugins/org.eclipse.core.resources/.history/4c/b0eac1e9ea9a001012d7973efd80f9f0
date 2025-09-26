@@ -1,0 +1,44 @@
+package com.example.traveladmin.service;
+
+import com.example.traveladmin.model.Cab;
+
+import com.example.traveladmin.repository.CabRepository;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import jakarta.persistence.*;
+@Service
+public class CabService {
+
+    private final CabRepository cabRepository;
+
+    public CabService(CabRepository cabRepository) {
+        this.cabRepository = cabRepository;
+    }
+
+    public List<Cab> getAllCabs() {
+        return cabRepository.findAll();
+    }
+
+    public Cab getCabById(Long id) {
+        return cabRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Cab not found with id: " + id));
+    }
+
+    public Cab addCab(Cab cab) {
+        return cabRepository.save(cab);
+    }
+
+    public Cab updateCab(Long id, Cab updatedCab) {
+        Cab cab = getCabById(id);
+        cab.setCabNumber(updatedCab.getCabNumber());
+        cab.setDriverName(updatedCab.getDriverName());
+        cab.setCapacity(updatedCab.getCapacity());
+        cab.setStatus(updatedCab.getStatus());
+        return cabRepository.save(cab);
+    }
+
+    public void deleteCab(Long id) {
+        cabRepository.deleteById(id);
+    }
+}
