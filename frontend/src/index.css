@@ -1,0 +1,19 @@
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #f7f7f7;
+}
+
+input, button {
+  padding: 8px;
+  font-size: 16px;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+  color: blue;
+}
