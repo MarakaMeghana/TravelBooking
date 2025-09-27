@@ -1,0 +1,5 @@
+package com.example.traveladmin.service;
+
+public class HotelService {
+
+}

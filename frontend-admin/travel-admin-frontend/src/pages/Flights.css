@@ -1,0 +1,58 @@
+/* src/pages/Flights.css */
+
+/* General container to ensure the outer box takes up full width for centering */
+.flights-container {
+    /* The Box component in JSX already handles centering via inline MUI sx, 
+       but this ensures any legacy styles don't interfere. */
+    width: 100%;
+    min-height: 100vh;
+}
+
+/* Card/Paper Styling - mostly handled by MUI's sx, but define core structure */
+.flights-card {
+    /* Max width and centering is handled in JSX, but this sets the stage */
+    /* background-color: white; */
+}
+
+/* Header Section */
+.flights-header {
+    /* Flexbox properties are managed by the JSX Box component */
+}
+
+/* Title Styling */
+.flights-title {
+    /* Adjusting default size if necessary, but h6 in JSX is usually fine */
+    font-size: 1.25rem; 
+}
+
+/* --- Table Styling --- */
+
+/* Ensures the table itself fits the container */
+.flights-table-container {
+    box-shadow: none; /* Remove table container shadow if it conflicts */
+}
+
+.flights-table {
+    /* Optional: Collapse borders for a cleaner look */
+    border-collapse: collapse;
+}
+
+/* Table Body Row Styling for zebra striping */
+/* Note: MUI's `sx` in the JSX file is already providing a cleaner, more controlled way to do this.
+   These classes are included for completeness if the JSX classes were used. */
+.row-even {
+    background-color: #fafafa; /* Very light gray */
+}
+
+.row-odd {
+    background-color: white;
+}
+
+/* Action Button Spacing (Used for Edit and Delete buttons) */
+.MuiTableCell-root > button {
+    margin-right: 8px; /* Spacing between Edit and Delete buttons */
+}
+/* Ensure the last button in the cell doesn't have extra margin */
+.MuiTableCell-root > button:last-child {
+    margin-right: 0;
+}

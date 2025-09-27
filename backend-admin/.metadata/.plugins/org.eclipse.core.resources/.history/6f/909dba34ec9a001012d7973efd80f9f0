@@ -1,0 +1,45 @@
+package com.example.traveladmin.service;
+
+import com.example.traveladmin.model.Flight;
+import com.example.traveladmin.repository.FlightRepository;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Service
+public class FlightService {
+
+    private final FlightRepository flightRepository;
+
+    public FlightService(FlightRepository flightRepository) {
+        this.flightRepository = flightRepository;
+    }
+
+    public List<Flight> getAllFlights() {
+        return flightRepository.findAll();
+    }
+
+    public Flight getFlightById(Long id) {
+        return flightRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Flight not found with id: " + id));
+    }
+
+    public Flight addFlight(Flight flight) {
+        return flightRepository.save(flight);
+    }
+
+    public Flight updateFlight(Long id, Flight updatedFlight) {
+        Flight flight = getFlightById(id);
+        flight.setAirline(updatedFlight.getAirline());
+        flight.setFlightNumber(updatedFlight.getFlightNumber());
+        flight.setSource(updatedFlight.getSource());
+        flight.setDestination(updatedFlight.getDestination());
+        flight.setDepartureTime(updatedFlight.getDepartureTime());
+        flight.setPrice(updatedFlight.getPrice());
+        return flightRepository.save(flight);
+    }
+
+    public void deleteFlight(Long id) {
+        flightRepository.deleteById(id);
+    }
+}
