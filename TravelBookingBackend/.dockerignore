@@ -1,0 +1,28 @@
+# Maven / Gradle build
+/target/
+/build/
+/out/
+/bin/
+
+# IDE settings
+*.iml
+.idea/
+.vscode/
+*.classpath
+*.project
+*.settings/
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Environment
+.env
+application-*.yml
+application-*.properties
+
+# Java
+*.class

@@ -1,0 +1,47 @@
+version: '3.8'
+
+services:
+  mysqldb:
+    image: mysql:8
+    container_name: mysql-db
+    environment:
+      MYSQL_ROOT_PASSWORD: docker
+      MYSQL_DATABASE: travelbooking
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - springboot-mysql-net
+
+  backend:
+    build:
+      context: ./TravelBookingBackend   # folder where your backend Dockerfile is
+      dockerfile: backend.Dockerfile 
+    container_name: springboot
+    ports:
+      - "2025:2000"
+    depends_on:
+      - mysqldb
+    restart: on-failure
+    networks:
+      - springboot-mysql-net
+
+  frontend:
+    build:
+      context: ./frontend   # folder where your frontend Dockerfile is
+      dockerfile: frontend.Dockerfile 
+    container_name: react
+    ports:
+      - "3000:80"           # React app served on port 80 in container
+    depends_on:
+      - backend
+    restart: on-failure
+    networks:
+      - springboot-mysql-net
+
+volumes:
+  mysql_data:
+
+networks:
+  springboot-mysql-net:

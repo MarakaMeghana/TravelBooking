@@ -6,25 +6,21 @@ import Footer from "../components/Customer/Footer";
 import { getDashboardData } from "../services/api"; // 👈 backend API
 import "./Dashboard.css";
 
-import ParisImg from "../assets/france.jpg";
-import BaliImg from "../assets/bali.jpg";
-import NewYorkImg from "../assets/newyork.jpg";
-
 // Static fallback destinations
 const destinations = [
   {
     name: "Paris, France",
-    image: ParisImg,
+    image: "/france.jpg", // 👈 served from public/
     description: "City of lights and love.",
   },
   {
     name: "Bali, Indonesia",
-    image: BaliImg,
+    image: "/bali.jpg",
     description: "Tropical paradise for your vacation.",
   },
   {
     name: "New York, USA",
-    image: NewYorkImg,
+    image: "/newyork.jpg",
     description: "The city that never sleeps.",
   },
 ];
